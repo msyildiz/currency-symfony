@@ -1,1 +1,5 @@
-<h1>Your names is {{ names }}</h1>
+<h1>Your names is
+{% for name in names %}
+    {{ name }}
+{% endfor %}
+</h1>
