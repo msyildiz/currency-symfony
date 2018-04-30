@@ -83,7 +83,7 @@ class CurrencyController extends Controller
     }
 
 
-    public function adaptor($url)
+    public function adapter($url)
     {
 
         $json_data = $this->curl_json($url);
@@ -106,7 +106,7 @@ class CurrencyController extends Controller
          * Api burada url ile verileri alıp işleyip veritabanına ekliyor.
          */
 
-        $dataToDb = $this->adaptor($url);
+        $dataToDb = $this->adapter($url);
 
         $entityManager = $this->getDoctrine()->getManager();
 
