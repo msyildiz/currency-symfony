@@ -30,6 +30,9 @@ class CurrencyController extends Controller
 
 
     function get_self($array){
+
+        // Parametre isimlerini sıfırlar
+
         $item = array();
         foreach ($array as $key) {
             $item[] = $key;
@@ -37,9 +40,6 @@ class CurrencyController extends Controller
 
         return $item;
     }
-
-
-
 
     public function get_row($array)
     {
@@ -91,51 +91,64 @@ class CurrencyController extends Controller
 
 
 
-    public function apitest()
-    {
-        return 'test';
-    }
 
-    public function index($url)
+    public function api($url)
     {
 
         $dataToDb = $this->adaptor($url);
 
         $entityManager = $this->getDoctrine()->getManager();
 
+        $symbol = array(0=>'USDTRY', 1=>'EURTRY', 2=>'GBPTRY');
+
         for ($i=0; $i<count($dataToDb[1]); $i++){
             $datas = new Datas();
-            $datas->setSymbol($dataToDb[0][$i]);
+            $datas->setSymbol($symbol[$i]);
             $datas->setAmount($dataToDb[1][$i]);
 
             $entityManager->persist($datas);
 
             $entityManager->flush();
-        }
 
+            $dataIDs[] = $datas->getId();
+        }
 
 
 
         return new Response('Saved: '.$datas->getId());
     }
 
-    public function api()
-    {
-        return new Response($this->index('http://www.mocky.io/v2/5a74519d2d0000430bfe0fa0'));
-        return new Response($this->index('http://www.mocky.io/v2/5a74524e2d0000430bfe0fa3'));
+
+
+    public function index(){
+        $this->api('http://www.mocky.io/v2/5a74519d2d0000430bfe0fa0');
+        $this->api('http://www.mocky.io/v2/5a74524e2d0000430bfe0fa3');
+
+        return $this->render('currency/show.html.twig');
     }
 
     public function list_data()
     {
-        $datas = $this->getDoctrine()
-            ->getRepository(Datas::class)
-            ->find(1);
+        $repostory = $this->getDoctrine()
+            ->getRepository(Datas::class);
 
-        if(!$datas){
-            throw $this->createNotFoundException('No data found');
-        }
+        $USDTRY = $repostory->findOneBy(
+        ['symbol'=>'USDTRY'],['amount'=> 'ASC']
+        );
 
-        return new Response('Currency : '.$datas->getSymbol());
+        $EURTRY = $repostory->findOneBy(
+            ['symbol'=>'EURTRY'],['amount'=> 'ASC']
+        );
+
+        $GBPTRY = $repostory->findOneBy(
+            ['symbol'=>'GBPTRY'],['amount'=> 'ASC']
+        );
+
+        $viewData = array('data'=>
+            array('USDTRY'=>$USDTRY, 'EURTRY'=>$EURTRY, 'GBPTRY'=>$GBPTRY)
+        );
+
+        return $this->render('currency/show.html.twig', $viewData);
     }
 
 
