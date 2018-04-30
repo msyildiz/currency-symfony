@@ -1,43 +1,7 @@
-#index:
-#    path: /
-#    defaults: { _controller: 'App\Controller\DefaultController::index' }
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\CurrencyController::list_data' }
 
 # config/routes.yaml
 
 # the "app_lucky_number" route name is not important yet
-app_lucky_number:
-    path: /lucky/number
-    controller: App\Controller\LuckyController::number
-
-app_random_names:
-        path: /random/names
-        controller: App\Controller\RandomController::names
-
-app_random_cars:
-        path: /random/cars
-        controller: App\Controller\RandomController::cars
-
-app_random_api1:
-        path: /random/api1
-        controller: App\Controller\RandomController::api1
-
-app_random_api2:
-        path: /random/api2
-        controller: App\Controller\RandomController::api2
-
-app_random_test:
-        path: /random/test
-        controller: App\Controller\RandomController::test
-
-app_currency_index:
-        path: /currency/index
-        controller: App\Controller\CurrencyController::index
-
-app_currency_list_data:
-        path: /currency/list_data
-        controller: App\Controller\CurrencyController::list_data
-
-app_currency_api:
-        path: /currency/api
-        controller: App\Controller\CurrencyController::api
-
