@@ -2,6 +2,7 @@
 
 Main Controller: CurrencyController
 
+Settings Function : CurrencyController:apisettings()
 
 
 #TABLE SCHEMA
