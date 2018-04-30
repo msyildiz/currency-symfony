@@ -85,13 +85,14 @@ class CurrencyController extends Controller
 
     public function adaptor($url)
     {
+
         $json_data = $this->curl_json($url);
         $varType = gettype($json_data);
-        if ($varType == 'array') {
+        if ($varType == 'array') { // veri çekildiğinde tipini bakıp dönüştürüyor
 
             return $this->list_row($this->get_row($json_data));
 
-        } else if ($varType == 'object') {
+        } else if ($varType == 'object') { // veri çekildiğinde tipini bakıp dönüştürüyor
 
             $array = $this->object_to_array($json_data);
             return $this->list_row($this->get_row($array));
@@ -101,6 +102,9 @@ class CurrencyController extends Controller
 
     public function api($url, $randKeyCreate)
     {
+        /**
+         * Api burada url ile verileri alıp işleyip veritabanına ekliyor.
+         */
 
         $dataToDb = $this->adaptor($url);
 
@@ -122,7 +126,11 @@ class CurrencyController extends Controller
 
     public function api_settings()
     {
-        $randKeyCreate = rand(456444, 999999);
+        /**
+         * Apinin ayarlanacağı kısım
+         */
+        $randKeyCreate = rand(456444, 999999); // bir random key atayıp vt´ye ekliyor
+
         $this->api('http://www.mocky.io/v2/5a74519d2d0000430bfe0fa0', $randKeyCreate);
         $this->api('http://www.mocky.io/v2/5a74524e2d0000430bfe0fa3', $randKeyCreate);
 
@@ -132,7 +140,12 @@ class CurrencyController extends Controller
 
     public function list_data()
     {
-        $randKey = $this->api_settings();
+
+        /**
+         * GUI
+         */
+
+        $randKey = $this->api_settings(); // Random key´i alıp vt den eşitleyip doğru veriyi seçiyor
 
         $repostory = $this->getDoctrine()
             ->getRepository(Datas::class);
@@ -153,6 +166,10 @@ class CurrencyController extends Controller
             array('USDTRY' => $USDTRY, 'EURTRY' => $EURTRY, 'GBPTRY' => $GBPTRY)
         );
 
+
+        /**
+         * Gelen veri arasında en düşük fiyatı bulup gösteriyor.
+         */
         return $this->render('currency/show.html.twig', $viewData);
     }
 
