@@ -32,8 +32,8 @@
       <file leaf-file-name="CurrencyController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/CurrencyController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+            <state relative-caret-position="450">
+              <caret line="25" column="48" lean-forward="true" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
               <folding>
                 <element signature="e#34#55#0#PHP" expanded="true" />
               </folding>
@@ -534,7 +534,7 @@
       <option name="presentableId" value="Default" />
       <updated>1525011558911</updated>
       <workItem from="1525011560251" duration="1006000" />
-      <workItem from="1525012587705" duration="22603000" />
+      <workItem from="1525012587705" duration="22615000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1525011605571</created>
@@ -662,11 +662,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525093120873</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Main controller">
+      <created>1525093147710</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1525093147710</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23609000" />
+    <option name="totallyTimeSpent" value="23621000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1308" height="784" extended-state="6" />
@@ -869,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CurrencyController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+        <state relative-caret-position="450">
+          <caret line="25" column="48" lean-forward="true" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
           <folding>
             <element signature="e#34#55#0#PHP" expanded="true" />
           </folding>
