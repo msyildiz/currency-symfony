@@ -1,6 +1,10 @@
 # DÖVİZ KURLARI
 
-TABLE SCHEMA
+Main Controller: CurrencyController
+
+
+
+#TABLE SCHEMA
 
 CREATE TABLE `datas` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
