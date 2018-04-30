@@ -122,22 +122,21 @@ class CurrencyController extends Controller
 
     public function list_data()
     {
-        //$randKey = $this->api_settings();
+        $randKey = $this->api_settings();
 
-        $randKey = '525100';
         $repostory = $this->getDoctrine()
             ->getRepository(Datas::class);
 
         $USDTRY = $repostory->findOneBy(
-            ['symbol' => 'USDTRY'], ['amount' => 'ASC'], ['rand_key'=>'525100']
+            ['symbol' => 'USDTRY', 'rand_key'=>$randKey], ['amount' => 'ASC']
         );
 
         $EURTRY = $repostory->findOneBy(
-            ['symbol' => 'EURTRY'], ['amount' => 'ASC'], ['rand_key'=>'525100']
+            ['symbol' => 'EURTRY', 'rand_key'=>$randKey], ['amount' => 'ASC']
         );
 
         $GBPTRY = $repostory->findOneBy(
-            ['symbol' => 'GBPTRY'], ['amount' => 'ASC'], ['rand_key'=>'525100']
+            ['symbol' => 'GBPTRY', 'rand_key'=>$randKey], ['amount' => 'ASC']
         );
 
         $viewData = array('data' =>
