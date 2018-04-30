@@ -10,6 +10,8 @@ class CurrencyController extends Controller
 {
     public function curl_json($url)
     {
+        // Curl get ile gelen veriyi json decode ediyor
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -21,6 +23,8 @@ class CurrencyController extends Controller
 
     public function object_to_array($obj)
     {
+        // Eğer veri object ise arraya çeviriyor
+
         $items = array();
         foreach ($obj as $key => $value) {
             $items[$key] = $value;
@@ -45,7 +49,9 @@ class CurrencyController extends Controller
 
     public function get_row($array)
     {
-        if (count($array) == 1) {
+        // Eğer veride json array var ise döndürüp son array a ulaşıyor
+
+        if (count($array) == 1) { // 1 ise yeniden döngüye sokuyor
             foreach ($array as $key => $value) {
                 $items[] = $value;
             }
@@ -53,7 +59,7 @@ class CurrencyController extends Controller
                 $newItem[] = $key2;
             }
             $row = $this->object_to_array($newItem);
-        } else {
+        } else { // 1 değilse zaten veriye ulaşılmış demektir
             $row = $this->object_to_array($array);
         }
 
@@ -62,6 +68,10 @@ class CurrencyController extends Controller
 
     public function list_row($array)
     {
+        /**
+         * Veriyi sembol ve oranlarına göre yeniden düzenleyip array yapıyor
+         */
+
         $items = array();
         for ($i = 0; $i < count($array); $i++) {
             foreach ($array[$i] as $key => $value) {
