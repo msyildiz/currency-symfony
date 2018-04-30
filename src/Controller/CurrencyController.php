@@ -173,5 +173,4 @@ class CurrencyController extends Controller
         return $this->render('currency/show.html.twig', $viewData);
     }
 
-
 }
